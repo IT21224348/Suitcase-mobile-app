@@ -1,5 +1,6 @@
 package com.example.suitcase
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -43,6 +44,17 @@ class Sign_up_page : AppCompatActivity() {
                                             Toast.makeText(this,"Account created successfully",Toast.LENGTH_SHORT).show()
                                             startActivity(Intent(this,Login_page::class.java))
                                             finish()
+
+                                            //Send verification email
+                                            val user = Firebase.auth.currentUser
+
+                                            user!!.sendEmailVerification()
+                                                .addOnCompleteListener { task ->
+                                                    if (task.isSuccessful) {
+                                                        Log.d(TAG, "Email sent.")
+
+                                                    }
+                                                }
                                         }else{
                                             //Account creation not success
                                             Log.e("error: ", signUpTask.exception.toString())
