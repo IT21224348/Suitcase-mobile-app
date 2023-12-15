@@ -119,7 +119,7 @@ private fun CheckAllFields():Boolean{
         return false
     }
 
-
+    //Verify completeness: Return true only if all fields are filled
     return true
   }
 
