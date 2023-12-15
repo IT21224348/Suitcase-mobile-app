@@ -1,5 +1,6 @@
 package com.example.suitcase
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,7 +28,13 @@ class ItemList_page : AppCompatActivity() {
         binding = ActivityItemListPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Setup floating button
+        //Setup floating button for add item page
+        binding.addItemBtn.setOnClickListener {
+            val intent = Intent(this,Add_Iteam_page::class.java)
+            intent.flags  = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+
+        }
 
 
         ItemRV = binding.itemsRv
