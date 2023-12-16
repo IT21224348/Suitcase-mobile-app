@@ -30,10 +30,10 @@ class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Ada
 
     override fun onBindViewHolder(holder: Item_Adapter.ItemHolder, position: Int) {
          val Current_Item = ItemList[position]
-         holder.Item_Name.setText(Current_Item.Item_name.toString())
-         holder.Item_Price.text = Current_Item.Item_price.toString()
+         holder.Item_Name.setText(Current_Item.item_name.toString())
+         holder.Item_Price.text = Current_Item.item_price.toString()
          Glide.with(holder.Item_Image.context)
-             .load(Current_Item.Image_url)
+             .load(Current_Item.image_url)
              .placeholder(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark)
              . error(com.firebase.ui.database.R.drawable.common_google_signin_btn_icon_dark_normal)
              .into(holder.Item_Image);
