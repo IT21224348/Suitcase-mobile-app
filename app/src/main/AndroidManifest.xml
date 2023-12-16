@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Suitcase"
         tools:targetApi="31">
         <activity
+            android:name=".PurchasedList_page"
+            android:exported="false" />
+        <activity
             android:name=".Add_Iteam_page"
             android:exported="false" />
         <activity

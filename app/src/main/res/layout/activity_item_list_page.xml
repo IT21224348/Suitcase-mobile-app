@@ -8,22 +8,44 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/items_rv"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="405dp"
+        android:layout_height="641dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_item_btn"
         android:layout_width="73dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="120dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintHorizontal_bias="0.848"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/baseline_add_24" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/itemlist_purchased_btn"
+            android:layout_width="76dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="176dp"
+            android:backgroundTint="#FEFAFD"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_shopping_cart_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

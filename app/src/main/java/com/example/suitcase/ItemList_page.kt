@@ -38,6 +38,13 @@ class ItemList_page : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Setup purchased item button for item page
+        binding.itemlistPurchasedBtn.setOnClickListener {
+            val intent = Intent(this,PurchasedList_page::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+        }
+
         ItemRV = binding.itemsRv
         ItemRV.layoutManager = LinearLayoutManager(this)
         ItemRV.hasFixedSize()
@@ -56,10 +63,9 @@ class ItemList_page : AppCompatActivity() {
                         for (itemsnapshot in snapshot.children) {
                             val item = itemsnapshot.getValue(Item_Model::class.java)
                             println(itemsnapshot)
-                            item?.let {
-                                ItemArrayList.add(it)
-                                nodeList.add(itemsnapshot.key.toString())
-                            }
+                            ItemArrayList.add(item!!)
+                            nodeList.add(itemsnapshot.key.toString())
+
                         }
 
                         var adapter = Item_Adapter(ItemArrayList)
@@ -103,6 +109,10 @@ class ItemList_page : AppCompatActivity() {
                     // You may want to remove the item from item_list as well
                     // Update UI or perform any other actions.
                     db.child(userId).child(itemKey).removeValue()
+                    // Reload the activity to refresh the UI
+                    finish()
+                    startActivity(intent)
+
                     Toast.makeText(this, "Item purchased successfully", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
