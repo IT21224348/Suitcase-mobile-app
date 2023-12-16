@@ -13,8 +13,12 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Adapter<Item_Adapter.ItemHolder>() {
 
+    interface OnPurchasedButtonClickListener{
+        fun onPurchasedButtonClick(item:Item_Model)
+    }
 
-    class ItemHolder(ItemView: View):RecyclerView.ViewHolder(ItemView){
+    var onPurchasedButtonClickListener: OnPurchasedButtonClickListener? =null
+    inner class ItemHolder(ItemView: View):RecyclerView.ViewHolder(ItemView){
 
         val Item_Name    : TextView          = ItemView.findViewById(R.id.Item_name)
         val Item_Price   : TextView          = ItemView.findViewById(R.id.Item_price)
@@ -22,6 +26,15 @@ class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Ada
         val Sms_btn      : ImageButton       = ItemView.findViewById(R.id.sms_btn)
         val purchase_btn : ImageButton       = ItemView.findViewById(R.id.purchased_btn)
 
+        init {
+            purchase_btn.setOnClickListener{
+                val position = adapterPosition
+                if(position != RecyclerView.NO_POSITION){
+                    val currentItem = ItemList[position]
+                    onPurchasedButtonClickListener?.onPurchasedButtonClick(currentItem)
+                }
+            }
+        }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Item_Adapter.ItemHolder {
          val ItemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout,parent,false)
