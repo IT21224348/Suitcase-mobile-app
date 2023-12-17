@@ -109,10 +109,8 @@ class ItemList_page : AppCompatActivity() {
                     // You may want to remove the item from item_list as well
                     // Update UI or perform any other actions.
                     db.child(userId).child(itemKey).removeValue()
-                    // Reload the activity to refresh the UI
-                    finish()
-                    startActivity(intent)
-
+                    // Refresh the activity to update the UI
+                    recreate()
                     Toast.makeText(this, "Item purchased successfully", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
