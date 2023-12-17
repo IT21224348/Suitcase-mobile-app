@@ -1,6 +1,5 @@
 package com.example.suitcase
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -79,18 +78,13 @@ class ItemList_page : AppCompatActivity() {
                                 }
                             }
 
-                        adapter.setOnItemClickListener(object : Item_Adapter.onItemClickListner {
-                            override fun onItemClick(position: Int) {
-                                val nodepath: String = nodeList[position]
-                                val intent = Intent()
-                                intent.putExtra("Item_id",nodepath)
-                                setResult(Activity.RESULT_OK,intent)
-                                val item = ItemArrayList[position]
-                                sendSms(item)
+                        adapter.onSMSButtonClickListener=
+                             object : Item_Adapter.OnSMSButtonClickListener{
+                                 override fun onSMSButtonClick(item: Item_Model) {
+                                     sendSms(item)
+                                 }
+                             }
 
-                                Log.e("Item_List_page","$nodepath")
-                            }
-                        })
                         ItemRV.adapter = adapter
 
 
