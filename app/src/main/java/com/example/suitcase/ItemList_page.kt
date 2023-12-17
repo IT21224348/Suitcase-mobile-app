@@ -1,6 +1,8 @@
 package com.example.suitcase
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -77,7 +79,22 @@ class ItemList_page : AppCompatActivity() {
                                 }
                             }
 
+                        adapter.setOnItemClickListener(object : Item_Adapter.onItemClickListner {
+                            override fun onItemClick(position: Int) {
+                                val nodepath: String = nodeList[position]
+                                val intent = Intent()
+                                intent.putExtra("Item_id",nodepath)
+                                setResult(Activity.RESULT_OK,intent)
+                                val item = ItemArrayList[position]
+                                sendSms(item)
+
+                                Log.e("Item_List_page","$nodepath")
+                            }
+                        })
                         ItemRV.adapter = adapter
+
+
+
                     }
                 }
 
@@ -118,5 +135,13 @@ class ItemList_page : AppCompatActivity() {
                     Toast.makeText(this, "Failed to purchase item", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+    private fun sendSms(item: Item_Model) {
+        // Add your SMS sending logic here using Intent.ACTION_SENDTO
+        // Example:
+        val smsIntent = Intent(Intent.ACTION_SENDTO)
+        smsIntent.data = Uri.parse("smsto:")  // Specify the recipient's number if needed
+        smsIntent.putExtra("sms_body", "Check out this item: ${item.item_name}, Price: ${item.item_price}")
+        startActivity(smsIntent)
     }
 }
