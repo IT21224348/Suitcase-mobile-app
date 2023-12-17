@@ -34,6 +34,8 @@ class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Ada
                     onPurchasedButtonClickListener?.onPurchasedButtonClick(currentItem)
                 }
             }
+
+
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Item_Adapter.ItemHolder {

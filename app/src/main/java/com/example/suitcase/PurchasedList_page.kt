@@ -3,6 +3,7 @@ package com.example.suitcase
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -55,8 +56,14 @@ class PurchasedList_page : AppCompatActivity() {
                         }
 
                         var adapter =Purchased_Adapter(ItemArrayList)
+                        adapter.onPurchasedDeleteButtonClickListener =
+                            object : Purchased_Adapter.OnPurchasedDeleteButtonClickListener{
+                                override fun onPurchasedDeleteButtonClick(item: Item_Model){
+                                    deleteItemToPurchasedList(item, nodeList[ItemArrayList.indexOf(item)])
+                                }
+                                
+                            }
                         Purchasedrv.adapter = adapter
-
 
                     }
                 }
@@ -74,6 +81,27 @@ class PurchasedList_page : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
             finish()
+        }
+
+    }
+
+    private fun deleteItemToPurchasedList(item: Item_Model, s: String) {
+        val purchasedListRef = FirebaseDatabase.getInstance().getReference("purchased_list")
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+
+        if (userId != null) {
+            // Add the item to purchased_list using the same key as in item_list
+            purchasedListRef.child(userId).child(s).removeValue()
+                .addOnSuccessListener {
+
+
+                    recreate()
+                    Toast.makeText(this, "Item Deleted successfully", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    // Handle failure
+                    Toast.makeText(this, "Failed to purchase item", Toast.LENGTH_SHORT).show()
+                }
         }
 
     }
