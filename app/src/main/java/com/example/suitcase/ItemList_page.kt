@@ -3,8 +3,11 @@ package com.example.suitcase
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -46,6 +49,8 @@ class ItemList_page : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+
         ItemRV = binding.itemsRv
         ItemRV.layoutManager = LinearLayoutManager(this)
         ItemRV.hasFixedSize()
@@ -81,7 +86,7 @@ class ItemList_page : AppCompatActivity() {
                         adapter.onSMSButtonClickListener=
                              object : Item_Adapter.OnSMSButtonClickListener{
                                  override fun onSMSButtonClick(item: Item_Model) {
-                                     sendSms(item)
+                                     showLocationDialog(item)
                                  }
                              }
 
@@ -130,12 +135,34 @@ class ItemList_page : AppCompatActivity() {
                 }
         }
     }
-    private fun sendSms(item: Item_Model) {
+    private fun showLocationDialog(item: Item_Model) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Tag Location")
+
+        // Set up the input
+        val input = EditText(this)
+        input.inputType = InputType.TYPE_CLASS_TEXT
+        builder.setView(input)
+
+        // Set up the buttons
+        builder.setPositiveButton("OK") { _, _ ->
+            val locationTag = input.text.toString()
+            sendSms(item, locationTag)
+        }
+        builder.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+
+        builder.show()
+    }
+
+    private fun sendSms(item: Item_Model, locationTag: String) {
         // Add your SMS sending logic here using Intent.ACTION_SENDTO
         // Example:
         val smsIntent = Intent(Intent.ACTION_SENDTO)
         smsIntent.data = Uri.parse("smsto:")  // Specify the recipient's number if needed
-        smsIntent.putExtra("sms_body", "Check out this item: ${item.item_name}, Price: ${item.item_price}")
+        smsIntent.putExtra(
+            "sms_body",
+            "Check out this item: ${item.item_name}, Price: ${item.item_price}\nLocation: $locationTag"
+        )
         startActivity(smsIntent)
     }
 }
