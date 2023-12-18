@@ -8,6 +8,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -19,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Suitcase"
         tools:targetApi="31">
-
+        <activity
+            android:name=".MapActivity"
+            android:exported="false" />
         <activity
             android:name=".Update_Delete_Item_page"
             android:exported="false" />
@@ -49,6 +54,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAQFbUx2GjU7OW2YKeUMDM-0qNXO5rBYz0"/>
     </application>
 
 </manifest>

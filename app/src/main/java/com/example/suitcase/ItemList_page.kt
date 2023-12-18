@@ -1,13 +1,10 @@
 package com.example.suitcase
 
+
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.text.InputType
 import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -86,7 +83,9 @@ class ItemList_page : AppCompatActivity() {
                         adapter.onSMSButtonClickListener=
                              object : Item_Adapter.OnSMSButtonClickListener{
                                  override fun onSMSButtonClick(item: Item_Model) {
-                                     showLocationDialog(item)
+                                     val intent = Intent(this@ItemList_page, MapActivity::class.java)
+                                     intent.putExtra("itemDetails", item)
+                                     startActivity(intent)
                                  }
                              }
 
@@ -126,7 +125,8 @@ class ItemList_page : AppCompatActivity() {
                     // Update UI or perform any other actions.
                     db.child(userId).child(itemKey).removeValue()
                     // Refresh the activity to update the UI
-                    recreate()
+                    finish()
+                    startActivity(intent)
                     Toast.makeText(this, "Item purchased successfully", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
@@ -135,6 +135,7 @@ class ItemList_page : AppCompatActivity() {
                 }
         }
     }
+    /*
     private fun showLocationDialog(item: Item_Model) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Tag Location")
@@ -162,7 +163,14 @@ class ItemList_page : AppCompatActivity() {
         smsIntent.putExtra(
             "sms_body",
             "Check out this item: ${item.item_name}, Price: ${item.item_price}\nLocation: $locationTag"
-        )
-        startActivity(smsIntent)
+        )*       startActivity(smsIntent)
+    }
+         */
+    private fun openmap(item: Item_Model){
+        val intent = Intent(this,MapActivity::class.java)
+        startActivity(intent)
+
+
     }
 }
+
