@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -59,7 +60,16 @@ class PurchasedList_page : AppCompatActivity() {
                         adapter.onPurchasedDeleteButtonClickListener =
                             object : Purchased_Adapter.OnPurchasedDeleteButtonClickListener{
                                 override fun onPurchasedDeleteButtonClick(item: Item_Model){
-                                    deleteItemToPurchasedList(item, nodeList[ItemArrayList.indexOf(item)])
+                                    val builder = AlertDialog.Builder(this@PurchasedList_page)
+                                    builder.setTitle("Are you sure you want to delete the item '${item.item_name}'?")
+                                    builder.setPositiveButton("Yes") { _, _ ->
+                                        deleteItemToPurchasedList(item, nodeList[ItemArrayList.indexOf(item)])
+                                    }
+                                    builder.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+
+                                    builder.show()
+
+
                                 }
                                 
                             }

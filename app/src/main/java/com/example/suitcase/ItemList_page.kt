@@ -127,11 +127,11 @@ class ItemList_page : AppCompatActivity() {
                     // Refresh the activity to update the UI
                     finish()
                     startActivity(intent)
-                    Toast.makeText(this, "Item purchased successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Item added to purchased list", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
                     // Handle failure
-                    Toast.makeText(this, "Failed to purchase item", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Failed to add purchased list", Toast.LENGTH_SHORT).show()
                 }
         }
     }
