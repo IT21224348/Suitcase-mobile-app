@@ -59,12 +59,13 @@ class Update_Delete_Item_page : AppCompatActivity() {
         val Item_description = binding.ItemUpdateDescription.text.toString()
         val Item_iamege  = binding.ItemUpdateImageurl.text.toString()
 
-        database = FirebaseDatabase.getInstance().getReference("Items")
-        val Item = Item_Model(Item_name,Item_price,Item_description,Item_iamege)
         val UserId = FirebaseAuth.getInstance().currentUser?.uid
-        if (UserId != null){
 
-            database.child(UserId).child(itemID).setValue(Item).addOnSuccessListener {
+        val Item = Item_Model(Item_name,Item_price,Item_description,Item_iamege)
+
+        if (UserId != null){
+            database = FirebaseDatabase.getInstance().getReference("Items").child(UserId)
+            database.child(itemID).setValue(Item).addOnSuccessListener {
                 setResult(RESULT_OK)
                 finish()
             }

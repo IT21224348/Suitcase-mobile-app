@@ -69,7 +69,6 @@ class ItemList_page : AppCompatActivity() {
                             println(itemsnapshot)
                             ItemArrayList.add(item!!)
                             nodeList.add(itemsnapshot.key.toString())
-
                         }
 
                         var adapter = Item_Adapter(ItemArrayList)

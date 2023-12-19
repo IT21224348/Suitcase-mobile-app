@@ -48,6 +48,7 @@ class Add_Iteam_page : AppCompatActivity() {
                 if (UserId != null){
                     database.child(UserId).push().setValue(Item).addOnSuccessListener {
 
+
                         binding.itemNameInput.text.clear()
                         binding.itemPriceInput.text.clear()
                         binding.itemDescriptionInput.text.clear()

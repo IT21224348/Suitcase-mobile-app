@@ -22,11 +22,7 @@ class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Ada
         fun onSMSButtonClick(item:Item_Model)
     }
 
-    private var mListener: OnItemClickListener = object : OnItemClickListener {
-        override fun OnItemClick(position: Int) {
-            // Default implementation
-        }
-    }
+    private lateinit var mListener: OnItemClickListener
 
     interface OnItemClickListener{
         fun OnItemClick(position: Int)
@@ -38,7 +34,7 @@ class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Ada
 
     var onPurchasedButtonClickListener: OnPurchasedButtonClickListener? =null
     var onSMSButtonClickListener: OnSMSButtonClickListener? = null
-    inner class ItemHolder(ItemView: View):RecyclerView.ViewHolder(ItemView){
+    inner class ItemHolder(ItemView: View, listener:OnItemClickListener):RecyclerView.ViewHolder(ItemView){
 
         val Item_Name    : TextView          = ItemView.findViewById(R.id.Item_name)
         val Item_Price   : TextView          = ItemView.findViewById(R.id.Item_price)
@@ -63,7 +59,7 @@ class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Ada
             }
 
             ItemView.setOnClickListener {
-                mListener.OnItemClick(adapterPosition)
+                listener.OnItemClick(adapterPosition)
             }
 
         }
@@ -71,7 +67,7 @@ class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Ada
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Item_Adapter.ItemHolder {
          val ItemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout,parent,false)
-         return ItemHolder(ItemView)
+         return ItemHolder(ItemView,mListener)
     }
 
     override fun onBindViewHolder(holder: Item_Adapter.ItemHolder, position: Int) {
