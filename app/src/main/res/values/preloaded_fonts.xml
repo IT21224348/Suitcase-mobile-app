@@ -7,6 +7,7 @@
         <item>@font/almendra_display</item>
         <item>@font/bad_script</item>
         <item>@font/bellota_light</item>
+        <item>@font/inter_medium</item>
         <item>@font/oswald_bold</item>
     </array>
 </resources>
