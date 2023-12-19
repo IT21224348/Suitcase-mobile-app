@@ -1,15 +1,11 @@
 package com.example.suitcase.Adapters
 
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.suitcase.DataClass.Item_Model
@@ -26,6 +22,19 @@ class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Ada
         fun onSMSButtonClick(item:Item_Model)
     }
 
+    private var mListener: OnItemClickListener = object : OnItemClickListener {
+        override fun OnItemClick(position: Int) {
+            // Default implementation
+        }
+    }
+
+    interface OnItemClickListener{
+        fun OnItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener:OnItemClickListener){
+        mListener = listener
+    }
 
     var onPurchasedButtonClickListener: OnPurchasedButtonClickListener? =null
     var onSMSButtonClickListener: OnSMSButtonClickListener? = null
@@ -53,26 +62,10 @@ class Item_Adapter(private var ItemList: ArrayList<Item_Model>):RecyclerView.Ada
                 }
             }
 
-
-        }
-        private fun sendSms(item: Item_Model?) {
-            item?.let {
-                // Check for SMS permission
-                if (ContextCompat.checkSelfPermission(itemView.context, android.Manifest.permission.SEND_SMS) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
-                    // Permission not granted, request it
-                    ActivityCompat.requestPermissions(
-                        itemView.context as AppCompatActivity,
-                        arrayOf(android.Manifest.permission.SEND_SMS),
-                        SMS_PERMISSION_REQUEST_CODE
-                    )
-                } else {
-                    // Permission already granted, proceed with SMS sending
-                    val smsIntent = Intent(Intent.ACTION_SENDTO)
-                    smsIntent.data = Uri.parse("smsto:")  // This ensures it opens in the default SMS app
-                    smsIntent.putExtra("sms_body", "Item Name: ${it.item_name}\nItem Price: ${it.item_price}")
-                    itemView.context.startActivity(smsIntent)
-                }
+            ItemView.setOnClickListener {
+                mListener.OnItemClick(adapterPosition)
             }
+
         }
     }
 

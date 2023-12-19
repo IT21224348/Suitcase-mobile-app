@@ -1,14 +1,10 @@
 package com.example.suitcase
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.suitcase.DataClass.Item_Model
 import com.example.suitcase.databinding.ActivityUpdateDeleteItemPageBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -27,53 +23,95 @@ class Update_Delete_Item_page : AppCompatActivity() {
         binding = ActivityUpdateDeleteItemPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        itemResultLauncher.launch(intent)
+        val intent = intent
+        if (intent.hasExtra("Item_id")) {
+            val itemID = intent.getStringExtra("Item_id")
+            // Now, use itemID to retrieve additional details and display them
+            if (itemID != null) {
+                displayItemDetails(itemID)
+                binding.ItemDeleteBtn.setOnClickListener {
 
-    }
-
-    private val itemResultLauncher =
-        registerForActivityResult<Intent, ActivityResult>(
-            ActivityResultContracts.StartActivityForResult()
-        ){ result: ActivityResult ->
-            if (result.resultCode == Activity.RESULT_OK){
-                val userId = FirebaseAuth.getInstance().currentUser?.uid
-                val intent = result.data
-                if (intent != null){
-                    nodeid = intent.getStringExtra("Item_id").toString()
-                    Log.d("Update_Delete_Item_page", "Node ID: $nodeid")
-                }
-                if (userId != null){
-                    database = FirebaseDatabase.getInstance().getReference("Items")
-                    database.child(userId.toString()).child(nodeid).get().addOnSuccessListener {
-                        if (it.exists()){
-                            binding.ItemUpdateName.setText(it.child("item_name").value.toString())
-                            binding.ItemUpdatePrice.setText(it.child("item_price").value.toString())
-                            binding.ItemUpdateDescription.setText(it.child("description").value.toString())
-                            binding.ItemUpdateImageurl.setText(it.child("image_url").value.toString())
-                            deleteItem(userId, nodeid)
-                        }else{
-                            Toast.makeText(this, "Item not found",Toast.LENGTH_SHORT).show()
-                        }
-                    }.addOnFailureListener {
-                        Toast.makeText(this,it.toString(),Toast.LENGTH_SHORT).show()
+                    val builder = AlertDialog.Builder(this@Update_Delete_Item_page)
+                    builder.setTitle("Are you sure you want to delete the item ?")
+                    builder.setPositiveButton("Yes") { _, _ ->
+                        deleteItem(itemID)
                     }
+                    builder.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+
+                    builder.show()
+
+                }
+
+                binding.ItemUpdateBtn.setOnClickListener {
+                    updateItem(itemID)
                 }
             }
         }
 
-    fun showlist(view: View){
-        var i: Intent
-        i = Intent(this,ItemList_page::class.java)
-        itemResultLauncher.launch(i)
-        Log.d("Update_Delete_Item_page", "showlist method called")
+
+
     }
 
-    private fun deleteItem(userId: String, nodeid: String) {
+    private fun updateItem(itemID: String) {
+
+        val Item_name = binding.ItemUpdateName.text.toString()
+        val Item_price  = binding.ItemUpdatePrice.text.toString()
+        val Item_description = binding.ItemUpdateDescription.text.toString()
+        val Item_iamege  = binding.ItemUpdateImageurl.text.toString()
+
         database = FirebaseDatabase.getInstance().getReference("Items")
-        database.child(userId).child(nodeid).removeValue().addOnSuccessListener {
-            Toast.makeText(this, "Item Deleted", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener {
-            Toast.makeText(this, "Item Deletion Failed", Toast.LENGTH_SHORT).show()
+        val Item = Item_Model(Item_name,Item_price,Item_description,Item_iamege)
+        val UserId = FirebaseAuth.getInstance().currentUser?.uid
+        if (UserId != null){
+
+            database.child(UserId).child(itemID).setValue(Item).addOnSuccessListener {
+                setResult(RESULT_OK)
+                finish()
+            }
+
+        }
+
+    }
+
+    private fun deleteItem(itemID: String) {
+        val UserId = FirebaseAuth.getInstance().currentUser?.uid
+        database = FirebaseDatabase.getInstance().getReference("Items")
+        if (UserId != null){
+            database.child(UserId).child(itemID).removeValue().addOnSuccessListener {
+                setResult(RESULT_OK)
+               /*
+                val intent = Intent(this,ItemList_page::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or  Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+*/
+                finish()
+            }
+
         }
     }
+
+    private fun displayItemDetails(s: String) {
+
+        val UserId = FirebaseAuth.getInstance().currentUser?.uid
+        if (UserId!= null){
+
+            database = FirebaseDatabase.getInstance().getReference("Items").child(UserId)
+            database.child(s).get().addOnSuccessListener {
+                if (it.exists()) {
+                    binding.ItemUpdateName.setText(it.child("item_name").value.toString())
+                    binding.ItemUpdatePrice.setText(it.child("item_price").value.toString())
+                    binding.ItemUpdateDescription.setText(it.child("description").value.toString())
+                    binding.ItemUpdateImageurl.setText(it.child("image_url").value.toString())
+                }  else{
+                    Toast.makeText(this,"Item not Found",Toast.LENGTH_SHORT).show()
+                }
+            }.addOnFailureListener {
+                Toast.makeText(this,it.toString(),Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+    }
+
+
 }

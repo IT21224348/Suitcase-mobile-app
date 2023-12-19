@@ -13,6 +13,7 @@ class Add_Iteam_page : AppCompatActivity() {
 
     private lateinit var binding : ActivityAddIteamPageBinding
     private lateinit var database: DatabaseReference
+    var nodeid = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,5 +95,5 @@ private fun CheckAllFields():Boolean{
     //Verify completeness: Return true only if all fields are filled
     return true
 
-}
+ }
 }
