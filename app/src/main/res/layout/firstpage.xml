@@ -23,8 +23,8 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="407dp"
-        android:layout_height="422dp"
+        android:layout_width="397dp"
+        android:layout_height="415dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#FEFAFD"
         android:backgroundTintMode="screen"
