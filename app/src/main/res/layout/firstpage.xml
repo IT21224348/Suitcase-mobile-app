@@ -33,12 +33,12 @@
         android:id="@+id/textView3"
         android:layout_width="257dp"
         android:layout_height="60dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="352dp"
         android:text="Suitcase"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
