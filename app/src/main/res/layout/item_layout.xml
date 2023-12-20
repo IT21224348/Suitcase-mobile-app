@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,8 +11,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="185dp"
-        android:padding="20dp">
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_margin="5dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_image"
@@ -20,7 +22,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="4dp"
             android:src="@mipmap/ic_launcher"
-            app:civ_border_color="@color/cardview_dark_background"
+            app:civ_border_color="@color/dark_yellow"
             app:civ_border_width="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +39,8 @@
             android:layout_toEndOf="@+id/item_image"
             android:text="Item Name"
             android:textAlignment="textStart"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.644"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +54,7 @@
             android:text="Item Price"
             android:textAlignment="textStart"
             android:textSize="18sp"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.588"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +62,8 @@
 
         <ImageButton
             android:id="@+id/sms_btn"
-            android:layout_width="66dp"
-            android:layout_height="66dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="#FEFEFE"
@@ -69,7 +71,7 @@
             app:layout_constraintHorizontal_bias="0.04"
             app:layout_constraintStart_toEndOf="@+id/item_image"
             app:layout_constraintTop_toBottomOf="@+id/Item_price"
-            app:srcCompat="@drawable/sms" />
+            app:srcCompat="@drawable/baseline_email_24" />
 
         <ImageButton
             android:id="@+id/purchased_btn"
@@ -81,7 +83,8 @@
             app:layout_constraintHorizontal_bias="0.414"
             app:layout_constraintStart_toEndOf="@+id/sms_btn"
             app:layout_constraintTop_toBottomOf="@+id/Item_price"
-            app:srcCompat="@drawable/purchased"
+            app:srcCompat="@drawable/baseline_playlist_add_check_24"
+            android:outlineSpotShadowColor="@color/dark_yellow"
             tools:ignore="SpeakableTextPresentCheck" />
 
 

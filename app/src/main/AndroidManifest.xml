@@ -23,8 +23,11 @@
         android:theme="@style/Theme.Suitcase"
         tools:targetApi="31">
         <activity
+            android:name=".login_page_start"
+            android:exported="false" />
+        <activity
             android:name=".Open_Activity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,13 +59,14 @@
             android:exported="false" />
         <activity
             android:name=".Firstpage"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value=" " />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

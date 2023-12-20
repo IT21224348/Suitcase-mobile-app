@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".login_page_start">
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:maxWidth="150dp"
+        android:maxHeight="150dp"
+        android:id="@+id/start_img"
+        android:src="@drawable/start_page_image"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/app_name_start"
+        android:text="SUITCASE"
+        android:textSize="50sp"
+        android:textColor="@color/dark_yellow"
+        android:fontFamily="@font/acme"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/slogan_line"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/alata"
+        android:text="Your Ultimate Travel Companion"
+        android:textColor="@color/dark_grey"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:maxHeight="48dp"
+        android:maxWidth="100dp"
+        android:id="@+id/start_login_btn"
+        android:background="@color/dark_yellow"
+        android:layout_marginTop="100dp"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_text_01"
+            android:text="Not Registered?"
+            android:textSize="16sp"
+            android:textColor="@color/dark_grey"
+            android:textStyle="normal"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_text_02"
+            android:text=" Sign Up"
+            android:textSize="18sp"
+            android:textColor="@color/dark_yellow"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
