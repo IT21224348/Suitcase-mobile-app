@@ -26,7 +26,7 @@
         android:layout_width="362dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
-        android:background="@drawable/input_fields"
+        android:background="@drawable/yellow_border"
         android:ems="10"
         android:hint="   Email"
         android:inputType="textEmailAddress"
@@ -40,7 +40,7 @@
         android:layout_width="362dp"
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/input_fields"
+        android:background="@drawable/yellow_border"
         android:ems="10"
         android:hint="   Password"
         android:inputType="textPassword"
@@ -54,7 +54,7 @@
         android:layout_width="362dp"
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/input_fields"
+        android:background="@drawable/yellow_border"
         android:ems="10"
         android:hint="   Confirm Password"
         android:inputType="textPassword"
@@ -89,42 +89,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signup_btn" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="66dp"
-        android:layout_height="69dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="220dp"
-        android:backgroundTint="#FEFAFD"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/google" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:backgroundTint="#FEFAFD"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.133"
-        app:srcCompat="@drawable/facebook" />
+        <ImageView
+            android:id="@+id/google_signup"
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:src="@drawable/google" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:backgroundTint="#FEFAFD"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.143"
-        app:srcCompat="@drawable/instagram" />
+        <ImageView
+            android:id="@+id/fb_signup"
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:src="@drawable/facebook" />
+
+        <ImageView
+            android:id="@+id/instagram_signup"
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:src="@drawable/instagram" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
