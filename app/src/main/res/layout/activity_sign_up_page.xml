@@ -88,22 +88,22 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_margin="10dp"
         android:background="@drawable/google" />
 
     <ImageButton
         android:id="@+id/imageButton3"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_margin="10dp"
         android:background="@drawable/facebook" />
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_margin="10dp"
         android:background="@drawable/instagram"/>
 
