@@ -51,7 +51,7 @@ class ItemList_page : AppCompatActivity() {
             startActivity(intent)
         }
 
-
+        //bottom navigation bar
         bottomNavigationView = binding.bottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -95,10 +95,18 @@ class ItemList_page : AppCompatActivity() {
 
                         for (itemsnapshot in snapshot.children) {
                             val item = itemsnapshot.getValue(Item_Model::class.java)
-                            println(itemsnapshot)
-                            ItemArrayList.add(item!!)
-                            nodeList.add(itemsnapshot.key.toString())
+//                            println(itemsnapshot)
+//                            ItemArrayList.add(item!!)
+//                            nodeList.add(itemsnapshot.key.toString())
+                            if (item != null) {
+//                                println(itemsnapshot)
+                                ItemArrayList.add(item!!)
+                                nodeList.add(itemsnapshot.key.toString())
+                            }
                         }
+
+                        //notify adapter
+//                        adapter.notifyDataSetChaged()
 
                         var adapter = Item_Adapter(ItemArrayList)
                         adapter.onPurchasedButtonClickListener =
@@ -121,12 +129,11 @@ class ItemList_page : AppCompatActivity() {
                         adapter.setOnItemClickListener(object:Item_Adapter.OnItemClickListener{
                             override fun OnItemClick(position: Int) {
                                 if (position >= 0 && position < nodeList.size) {
-                                    val nodepath: String = nodeList[position]
+                                    val nodePath: String = nodeList[position]
                                     val intent = Intent(this@ItemList_page, Update_Delete_Item_page::class.java)
-                                    intent.putExtra("Item_id", nodepath)
-                                    Log.d("ItemList_page", "Received Item_id: $nodepath")
+                                    intent.putExtra("Item_id", nodePath)
+                                    Log.d("ItemList_page", "Received Item_id: $nodePath")
                                     startActivityForResult(intent, 2)
-
                                 }else{
                                     Log.e("Add_Iteam_page", "Invalid position: $position")
                                 }
@@ -170,7 +177,8 @@ class ItemList_page : AppCompatActivity() {
                     db.child(userId).child(itemKey).removeValue()
                     // Refresh the activity to update the UI
                     finish()
-                    startActivity(intent)
+//                    startActivity(intent)
+                    recreate()
                     Toast.makeText(this, "Item added to purchased list", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
@@ -194,6 +202,7 @@ class ItemList_page : AppCompatActivity() {
         // This could involve re-fetching the data or updating the local dataset
         // Then, notify the adapter that the dataset has changed
         recreate()
+//        adapter.notifyDataSetChanged()
     }
     /*
     private fun showLocationDialog(item: Item_Model) {
@@ -229,8 +238,6 @@ class ItemList_page : AppCompatActivity() {
     private fun openmap(item: Item_Model){
         val intent = Intent(this,MapActivity::class.java)
         startActivity(intent)
-
-
     }
 }
 

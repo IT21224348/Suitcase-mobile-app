@@ -1,5 +1,6 @@
 package com.example.suitcase
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -54,10 +55,13 @@ class Add_Iteam_page : AppCompatActivity() {
                         binding.itemDescriptionInput.text.clear()
                         binding.itemImageUrlInput.text.clear()
 
+                        val intent = Intent(this@Add_Iteam_page, ItemList_page::class.java)
+                        startActivity(intent)
+
                         Toast.makeText(this,"Item added Successfully",Toast.LENGTH_SHORT).show()
 
                     }.addOnFailureListener {
-                        Toast.makeText(this,"Item adding is not successfull",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"Item adding is not successful",Toast.LENGTH_SHORT).show()
                     }
 
                 }
