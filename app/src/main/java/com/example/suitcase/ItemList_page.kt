@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.suitcase.Adapters.Item_Adapter
 import com.example.suitcase.DataClass.Item_Model
 import com.example.suitcase.databinding.ActivityItemListPageBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -20,12 +21,15 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 
+
+
 class ItemList_page : AppCompatActivity() {
     private lateinit var binding: ActivityItemListPageBinding
     private lateinit var ItemRV: RecyclerView
     private lateinit var ItemArrayList: ArrayList<Item_Model>
     private lateinit var db: DatabaseReference
     private val nodeList = ArrayList<String>()
+    private lateinit var  bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +51,28 @@ class ItemList_page : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        bottomNavigationView = binding.bottomNavigationView
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    val intent = Intent(this, ItemList_page::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.list -> {
+                    val intent = Intent(this, PurchasedList_page::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.info -> {
+                    return@setOnNavigationItemSelectedListener true
+                }
+            }
+            true
+        }
 
 
         ItemRV = binding.itemsRv

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.suitcase.Adapters.Purchased_Adapter
 import com.example.suitcase.DataClass.Item_Model
 import com.example.suitcase.databinding.ActivityPurchasedListPageBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -25,6 +26,7 @@ class PurchasedList_page : AppCompatActivity() {
     private lateinit var ItemArrayList: ArrayList<Item_Model>
     private lateinit var db: DatabaseReference
     private val nodeList = ArrayList<String>()
+    private lateinit var  bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -38,6 +40,30 @@ class PurchasedList_page : AppCompatActivity() {
         ItemArrayList = arrayListOf()
         db = FirebaseDatabase.getInstance().getReference().child("purchased_list")
         val userId = FirebaseAuth.getInstance().currentUser?.uid
+
+
+        //bottom navigation
+        bottomNavigationView = binding.bottomNavigationView
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> {
+                    val intent = Intent(this, ItemList_page::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.list -> {
+                    val intent = Intent(this, PurchasedList_page::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
+                    return@setOnNavigationItemSelectedListener true
+                }
+                R.id.info -> {
+                    return@setOnNavigationItemSelectedListener true
+                }
+            }
+            true
+        }
 
         if (userId != null) {
             val userItemsRef = db.child(userId)
