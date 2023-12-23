@@ -7,7 +7,7 @@
     tools:context=".PurchasedList_page">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/purchased_rv"
+        android:id="@+id/purchasedRv"
         android:layout_width="409dp"
         android:layout_height="729dp"
         app:layout_constraintBottom_toBottomOf="parent"

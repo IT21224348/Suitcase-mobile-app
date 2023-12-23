@@ -59,6 +59,9 @@ class PurchasedList_page : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.info -> {
+                    val intent = Intent(this, AboutActivityPage::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
                     return@setOnNavigationItemSelectedListener true
                 }
             }

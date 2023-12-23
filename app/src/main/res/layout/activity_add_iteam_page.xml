@@ -10,7 +10,6 @@
     tools:context=".Add_Iteam_page">
 
     <TextView
-        android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -22,7 +21,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/item_name_input"
+        android:id="@+id/itemNameInput"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -35,7 +34,6 @@
         android:background="@drawable/yellow_border"/>
 
     <TextView
-        android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -47,7 +45,7 @@
         android:text="Item Price"/>
 
     <EditText
-        android:id="@+id/item_price_input"
+        android:id="@+id/itemPriceInput"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -60,7 +58,6 @@
         android:inputType="numberDecimal"/>
 
     <TextView
-        android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -72,7 +69,7 @@
         android:text="Item Description" />
 
     <EditText
-        android:id="@+id/item_description_input"
+        android:id="@+id/itemDescriptionInput"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -85,7 +82,6 @@
         android:inputType="textMultiLine"/>
 
     <TextView
-        android:id="@+id/textView14"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -98,7 +94,7 @@
 
 
     <EditText
-        android:id="@+id/item_imageUrl_input"
+        android:id="@+id/itemImageUrlInput"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -120,7 +116,7 @@
         android:layout_marginEnd="20dp">
 
         <Button
-            android:id="@+id/Item_Submit_btn"
+            android:id="@+id/ItemSubmitBtn"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="1"
@@ -130,7 +126,7 @@
             android:text="Submit" />
 
         <Button
-            android:id="@+id/Item_cancle_btn"
+            android:id="@+id/ItemCancleBtn"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="1"

@@ -10,7 +10,6 @@
     tools:context=".Update_Delete_Item_page">
 
     <TextView
-        android:id="@+id/textView15"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -21,7 +20,7 @@
         android:text="Item name" />
 
     <EditText
-        android:id="@+id/Item_update_name"
+        android:id="@+id/ItemUpdateName"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -33,7 +32,6 @@
         android:inputType="text"/>
 
     <TextView
-        android:id="@+id/textView16"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -45,7 +43,7 @@
 
 
     <EditText
-        android:id="@+id/Item_update_price"
+        android:id="@+id/ItemUpdatePrice"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -58,7 +56,6 @@
 
 
     <TextView
-        android:id="@+id/textView17"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -69,7 +66,7 @@
         android:text="Description" />
 
     <EditText
-        android:id="@+id/Item_update_description"
+        android:id="@+id/ItemUpdateDescription"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
@@ -81,7 +78,6 @@
         android:inputType="textMultiLine" />
 
     <TextView
-        android:id="@+id/textView18"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -92,7 +88,7 @@
         android:text="Image Url" />
 
     <EditText
-        android:id="@+id/Item_update_imageurl"
+        android:id="@+id/ItemUpdateImageurl"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
@@ -114,7 +110,7 @@
         android:layout_marginEnd="20dp">
 
         <Button
-            android:id="@+id/Item_Update_btn"
+            android:id="@+id/ItemUpdateBtn"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="1"
@@ -124,7 +120,7 @@
             android:text="Update" />
 
         <Button
-            android:id="@+id/Item_Delete_btn"
+            android:id="@+id/ItemDeleteBtn"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="1"

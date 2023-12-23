@@ -43,7 +43,7 @@ class Login_page : AppCompatActivity() {
                         Toast.makeText(this,"Successfully signed in",Toast.LENGTH_SHORT).show()
 
                         //Navigate to item list page
-                        val intent = Intent(this,ItemList_page::class.java)
+                        val intent = Intent(this, ItemList_page::class.java)
                         startActivity(intent)
                     }else{
                         Log.e("error: ", task.exception.toString())

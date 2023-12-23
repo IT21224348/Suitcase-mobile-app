@@ -7,7 +7,7 @@
     tools:context=".ItemList_page">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/items_rv"
+        android:id="@+id/itemsRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="@id/bottomNavigationView"
@@ -30,7 +30,7 @@
         app:srcCompat="@drawable/baseline_add_24" />
 
     <ImageButton
-        android:id="@+id/itemlist_purchased_btn"
+        android:id="@+id/itemlistPurchasedBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="30dp"

@@ -10,7 +10,7 @@
     tools:context=".Sign_up_page">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/signupEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -21,7 +21,6 @@
         android:textStyle="normal" />
 
     <EditText
-        android:id="@+id/signup_email"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -33,7 +32,7 @@
         android:paddingStart="10dp"/>
 
     <EditText
-        android:id="@+id/signup_pwd"
+        android:id="@+id/signupPwd"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -45,7 +44,7 @@
         android:paddingStart="10dp"/>
 
     <EditText
-        android:id="@+id/signup_pwd_confirm"
+        android:id="@+id/signupPwdConfirm"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -68,7 +67,6 @@
         android:layout_marginEnd="20dp"/>
 
     <TextView
-        android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -87,21 +85,18 @@
     android:gravity="top">
 
     <ImageButton
-        android:id="@+id/imageButton2"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="10dp"
         android:background="@drawable/google" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="10dp"
         android:background="@drawable/facebook" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="10dp"

@@ -14,14 +14,12 @@
         android:layout_height="350dp"
         android:maxWidth="150dp"
         android:maxHeight="150dp"
-        android:id="@+id/start_img"
         android:src="@drawable/start_page_image"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/app_name_start"
         android:text="SUITCASE"
         android:textSize="50sp"
         android:textColor="@color/dark_yellow"
@@ -33,7 +31,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/slogan_line"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/alata"
         android:text="Your Ultimate Travel Companion"
@@ -42,11 +39,11 @@
         android:textStyle="normal" />
 
     <Button
+        android:id="@+id/startLoginBtn"
         android:layout_width="350dp"
         android:layout_height="48dp"
         android:maxHeight="48dp"
         android:maxWidth="100dp"
-        android:id="@+id/start_login_btn"
         android:background="@color/dark_yellow"
         android:layout_marginTop="100dp"
         android:text="Login"
@@ -64,7 +61,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/reg_text_01"
             android:text="Not Registered?"
             android:textSize="16sp"
             android:textColor="@color/dark_grey"
@@ -73,9 +69,9 @@
             />
 
         <TextView
+            android:id="@+id/regText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/reg_text"
             android:text=" Sign Up"
             android:textSize="18sp"
             android:textColor="@color/dark_yellow"
