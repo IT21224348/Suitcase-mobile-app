@@ -23,7 +23,6 @@
         android:layout_height="61dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
-        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.922"
@@ -32,14 +31,15 @@
 
     <ImageButton
         android:id="@+id/itemlist_purchased_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@id/add_item_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/dark_yellow"
-        app:srcCompat="@drawable/baseline_shopping_cart_24" />
+        android:outlineSpotShadowColor="@color/dark_grey"
+        android:background="@drawable/yellow_filled_circle"
+        app:srcCompat="@drawable/baseline_add_shopping_cart_24" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
