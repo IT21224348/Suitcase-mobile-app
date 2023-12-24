@@ -8,7 +8,7 @@ import com.example.suitcase.databinding.ActivityOpenBinding
 
 class Open_Activity : AppCompatActivity() {
     private lateinit var binding: ActivityOpenBinding
-    private val DELAY_TIME = 3000L // 3 seconds in milliseconds
+    private val DELAY_TIME = 5000L // 5 seconds in milliseconds
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Initializing binding
