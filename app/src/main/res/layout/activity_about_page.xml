@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:context=".AboutActivityPage">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/dark_yellow"
+        android:elevation="4dp"
+        app:title="About"
+        app:titleTextColor="@android:color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigationView"
+        android:layout_below="@id/toolbar"
+        android:orientation="vertical">
+
+        <!-- Your other views -->
 
         <ImageView
             android:id="@+id/about_page_image"
             android:layout_width="200dp"
             android:layout_height="250dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/road_signs"
             tools:ignore="MissingConstraints" />
 
@@ -26,6 +42,7 @@
             android:gravity="center"
             android:layout_marginTop="20dp"
             android:text="SUITCASE Mobile App"
+            android:layout_gravity="center"
             android:textSize="16sp"/>
 
         <TextView
@@ -33,20 +50,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="version 1.1"
-            android:textSize="16sp"
-            tools:ignore="MissingConstraints" />
+            android:layout_marginTop="20dp"
+            android:text="Version 1.1"
+            android:layout_gravity="center"
+            android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/about_page_text3"
+        <TextView
+            android:id="@+id/about_page_text4"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginTop="20dp"
+            android:text="SUITCASE is a travel app simplifying packing with lists, suggesting needed items, and enabling in-app messaging. It integrates live store locations, aiding users in purchasing essential items for a stress-free trip planning experience."
+            android:layout_gravity="center"
+            android:justificationMode="inter_word"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/about_page_text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center"
+            android:text="All Rights Reserved ©"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="100dp"
-        android:text="all rights reserved ©"
-        android:textSize="16sp"
-         />
+        android:background="@color/dark_yellow"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav" />
 
-
-
-</LinearLayout>
+</RelativeLayout>

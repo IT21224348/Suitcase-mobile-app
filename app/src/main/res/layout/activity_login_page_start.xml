@@ -44,12 +44,10 @@
         android:layout_height="48dp"
         android:maxHeight="48dp"
         android:maxWidth="100dp"
-        android:background="@color/dark_yellow"
+        android:background="@drawable/yellow_btn"
         android:layout_marginTop="100dp"
         android:text="Login"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="24sp"
+        android:textSize="18sp"
         />
 
 

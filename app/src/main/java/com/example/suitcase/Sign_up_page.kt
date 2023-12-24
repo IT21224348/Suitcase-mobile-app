@@ -23,6 +23,13 @@ class Sign_up_page : AppCompatActivity() {
         binding = ActivitySignUpPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Setup first page login button
+        binding.startLoginBtn.setOnClickListener {
+            val intent = Intent(this,Login_page::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+        }
+
         //Get a instance of the firebase authentication
         auth = Firebase.auth
 

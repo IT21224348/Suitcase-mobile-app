@@ -50,23 +50,27 @@ class PurchasedList_page : AppCompatActivity() {
                     val intent = Intent(this, ItemList_page::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                     startActivity(intent)
+                    finish()
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.list -> {
-                    val intent = Intent(this, PurchasedList_page::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    startActivity(intent)
+//                    val intent = Intent(this, PurchasedList_page::class.java)
+//                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+//                    startActivity(intent)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.info -> {
                     val intent = Intent(this, AboutActivityPage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                     startActivity(intent)
+                    finish()
                     return@setOnNavigationItemSelectedListener true
                 }
             }
             true
         }
+
+        bottomNavigationView.selectedItemId = R.id.list
 
         if (userId != null) {
             val userItemsRef = db.child(userId)

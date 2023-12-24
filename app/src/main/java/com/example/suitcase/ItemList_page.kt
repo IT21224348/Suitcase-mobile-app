@@ -45,37 +45,41 @@ class ItemList_page : AppCompatActivity() {
         }
 
         //Setup purchased item button for item page
-        binding.itemlistPurchasedBtn.setOnClickListener {
-            val intent = Intent(this,PurchasedList_page::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-            startActivity(intent)
-        }
+//        binding.itemlistPurchasedBtn.setOnClickListener {
+//            val intent = Intent(this,PurchasedList_page::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+//            startActivity(intent)
+//        }
 
         //bottom navigation bar
         bottomNavigationView = binding.bottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.home -> {
-                    val intent = Intent(this, ItemList_page::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    startActivity(intent)
+//                    val intent = Intent(this, ItemList_page::class.java)
+//                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+//                    startActivity(intent)
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.list -> {
                     val intent = Intent(this, PurchasedList_page::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                     startActivity(intent)
+                    finish()
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.info -> {
                     val intent = Intent(this, AboutActivityPage::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                     startActivity(intent)
+                    finish()
                     return@setOnNavigationItemSelectedListener true
                 }
             }
             true
         }
+
+        bottomNavigationView.selectedItemId = R.id.home
 
 
         ItemRV = binding.itemsRv

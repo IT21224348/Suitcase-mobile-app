@@ -29,6 +29,8 @@ class Add_Iteam_page : AppCompatActivity() {
             binding.itemPriceInput.setText("")
             binding.itemDescriptionInput.setText("")
             binding.itemImageUrlInput.setText("")
+
+            finish()
         }
 
         //Set a click listener on the "Add" button

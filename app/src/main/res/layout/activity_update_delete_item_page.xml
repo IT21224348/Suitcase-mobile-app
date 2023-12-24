@@ -9,6 +9,18 @@
     android:gravity="center"
     tools:context=".Update_Delete_Item_page">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/dark_yellow"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="4dp"
+        app:title="Update Item"
+        app:titleTextColor="@android:color/white" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="48dp"
