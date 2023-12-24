@@ -181,8 +181,8 @@ class ItemList_page : AppCompatActivity() {
                     db.child(userId).child(itemKey).removeValue()
                     // Refresh the activity to update the UI
                     finish()
-//                    startActivity(intent)
-                    recreate()
+                    startActivity(intent)
+//                    recreate()
                     Toast.makeText(this, "Item added to purchased list", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {
